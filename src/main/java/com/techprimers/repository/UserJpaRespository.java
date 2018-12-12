@@ -1,11 +1,11 @@
 package com.techprimers.repository;
 
-import com.techprimers.model.Users;
+import com.techprimers.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
 @Component
-public interface UserJpaRespository extends JpaRepository<Users, Long>{
+public interface UserJpaRespository extends JpaRepository<User, Long>{
 
-    Users findByName(String name);
+    User findByName(String name);
 }

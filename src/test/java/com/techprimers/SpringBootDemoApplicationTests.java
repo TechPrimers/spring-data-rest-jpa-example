@@ -24,13 +24,13 @@ import org.springframework.test.web.servlet.MvcResult;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.techprimers.controller.UsersController;
-import com.techprimers.model.Users;
+import com.techprimers.model.User;
 import com.techprimers.repository.UserJpaRespository;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(UsersController.class)
 public class SpringBootDemoApplicationTests {
-	private Users user;
+	private User user;
 	
 	@Autowired
 	private MockMvc mockMvc;
@@ -41,7 +41,7 @@ public class SpringBootDemoApplicationTests {
 	@Before
 	public void setUp()
 	{
-		user = new Users();
+		user = new User();
 		user.setId(1l);
 		user.setName("Virat");
 		user.setTeamName("RCB");
@@ -63,7 +63,7 @@ public class SpringBootDemoApplicationTests {
 
 	@Test
 	public void findAllUsersTest() throws Exception {
-		List<Users> users = new ArrayList<>();
+		List<User> users = new ArrayList<>();
 		users.add(user);
 
 		when(userJpaRespository.findAll()).thenReturn(users);
