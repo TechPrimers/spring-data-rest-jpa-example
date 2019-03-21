@@ -3,16 +3,20 @@ phases:
   pre_build:
     commands:
       - echo Entering pre_build phase...
+      - ls -lrt
   build:
     commands:
       - echo Entering build phase...
       - echo Build started on `date`
       - mvn clean install
+      - ls -lrt
+      - ls -lrt target/
   post_build:
     commands:
       - echo Entering post_build phase...
       - echo Build completed on `date`i
-      - echo ls -lrt
+      - ls -lrt
+      - ls -lrt target/
 artifacts:
   files:
-    - target/spring-boot-demo-1.0-SNAPSHOT.war
+    - target/spring-boot-demo-0.0.1-SNAPSHOT.war
