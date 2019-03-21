@@ -1,0 +1,23 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - echo Entering pre_build phase...
+  build:
+    commands:
+      - echo Entering build phase...
+      - echo Build started on `date`
+      - mvn clean install
+  post_build:
+    commands:
+      - echo Entering post_build phase...
+      - echo Build completed on `date`i
+      - echo ls -lrt
+      - 
+      - ./jfrog rt u "*.war" libs-release-local --build-name=codestar-demo-java-app --build-number=$CODEBUILD_BUILD_ID --flat=false
+      - ./jfrog rt bce codestar-demo-java-app $CODEBUILD_BUILD_ID
+      - ./jfrog rt bp codestar-demo-java-app $CODEBUILD_BUILD_ID
+artifacts:
+  files:
+    - target/spring-boot-demo-1.0-SNAPSHOT.war
+    - aws/buildspec.yml
